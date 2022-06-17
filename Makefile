@@ -1,5 +1,5 @@
 HOME=$(shell pwd)
-MAINVERSION=2.5
+MAINVERSION=2.6
 LUA_VERSION=5.4.3
 USE_LUA?=0
 NO_SUDO?=0
@@ -30,7 +30,7 @@ download-upstream:
 
 build_lua:
 	sudo yum install -y readline-devel
-	wget https://www.lua.org/ftp/lua-${LUA_VERSION}.tar.gz
+	wget --no-check-certificate  https://www.lua.org/ftp/lua-${LUA_VERSION}.tar.gz
 	tar xzf lua-${LUA_VERSION}.tar.gz
 	cd lua-${LUA_VERSION}
 	$(MAKE) -C lua-${LUA_VERSION} clean

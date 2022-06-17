@@ -8,7 +8,7 @@ Build latest haproxy binary with prometheus metrics support
 ![GitHub last commit](https://img.shields.io/github/last-commit/Vonng/pigsty?style=for-the-badge)
 ![GitHub All Releases](https://img.shields.io/github/downloads/Vonng/pigsty/total?style=for-the-badge)
 
-### [HAProxy](http://www.haproxy.org/) 2.5.7 2022/05/13
+### [HAProxy](http://www.haproxy.org/) 2.6.0 2022/05/31
 
 Perform the following steps on a build box as a regular user:
 
