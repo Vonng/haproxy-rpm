@@ -4,7 +4,6 @@
 
 %define dist %{expand:%%(/usr/lib/rpm/redhat/dist.sh --dist)}
 
-
 %global _hardened_build 1
 
 Summary: HA-Proxy reverse proxy for high availability environments
@@ -43,17 +42,18 @@ availability environments. Indeed, it can:
 - stop accepting connections without breaking existing ones
 - add/modify/delete HTTP headers both ways
 - block requests matching a particular pattern
+- expose internal metrics in prometheus format
 
 It needs very little resource. Its event-driven architecture allows it to easily
 handle thousands of simultaneous connections on hundreds of instances without
 risking the system's stability.
 
-https://github.com/philyuchkoff/HAProxy-2-RPM-builder
+https://github.com/Vonng/haproxy-rpm
 
 %prep
 %setup -q
 
-# We don't want any perl dependecies in this RPM:
+# We don't want any perl dependencies in this RPM:
 %define __perl_requires /bin/true
 
 %build
@@ -92,18 +92,16 @@ popd
 %{__install} -p -D -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}.service
 %{__install} -s %{name} %{buildroot}%{_sbindir}/
 
-
 %clean
 [ "%{buildroot}" != "/" ] && %{__rm} -rf %{buildroot}
 
 %pre
 getent group %{haproxy_group} >/dev/null || \
-       groupadd -g 188 -r %{haproxy_group}
+       groupadd -g 288 -r %{haproxy_group}
 getent passwd %{haproxy_user} >/dev/null || \
-       useradd -u 188 -r -g %{haproxy_group} -d %{haproxy_home} \
+       useradd -u 288 -r -g %{haproxy_group} -d %{haproxy_home} \
        -s /sbin/nologin -c "%{name}" %{haproxy_user}
 exit 0
-
 
 %files
 %defattr(-,root,root)

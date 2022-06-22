@@ -38,9 +38,9 @@ build_lua:
 	$(MAKE) -C lua-${LUA_VERSION} install
 
 build_stages := install_prereq clean download-upstream
-ifeq ($(USE_LUA),1)
-	build_stages += build_lua
-endif
+#ifeq ($(USE_LUA),1)
+#	build_stages += build_lua
+#endif
 
 build-docker:
 	docker build -t haproxy-rpm-builder:latest -f Dockerfile .
@@ -53,7 +53,7 @@ build: $(build_stages)
 	cp -r ./SPECS/* ./rpmbuild/SPECS/ || true
 	cp -r ./SOURCES/* ./rpmbuild/SOURCES/ || true
 	rpmbuild -ba SPECS/haproxy.spec \
-		--define "mainversion ${MAINVERSION}" \
+	--define "mainversion ${MAINVERSION}" \
 	--define "version ${VERSION}" \
 	--define "release ${RELEASE}" \
 	--define "_topdir %(pwd)/rpmbuild" \
@@ -64,3 +64,17 @@ build: $(build_stages)
 	--define "_use_lua ${USE_LUA}" \
 	--define "_use_prometheus ${USE_PROMETHEUS}"
 
+build-raw:
+	cp -r ./SPECS/* ./rpmbuild/SPECS/ || true
+	cp -r ./SOURCES/* ./rpmbuild/SOURCES/ || true
+	rpmbuild --nodebuginfo -ba SPECS/haproxy.spec \
+	--define "mainversion ${MAINVERSION}" \
+	--define "version ${VERSION}" \
+	--define "release 1" \
+	--define "_topdir %(pwd)/rpmbuild" \
+	--define "_builddir %{_topdir}/BUILD" \
+	--define "_buildroot %{_topdir}/BUILDROOT" \
+	--define "_rpmdir %{_topdir}/RPMS" \
+	--define "_srcrpmdir %{_topdir}/SRPMS" \
+	--define "_use_lua 0" \
+	--define "_use_prometheus 1"
