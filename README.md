@@ -5,13 +5,13 @@ Build latest haproxy binary with prometheus metrics support
 ![GitHub last commit](https://img.shields.io/github/last-commit/Vonng/pigsty?style=for-the-badge)
 ![GitHub All Releases](https://img.shields.io/github/downloads/Vonng/pigsty/total?style=for-the-badge)
 
-[Download](https://github.com/Vonng/haproxy-rpm/releases/tag/v2.7.2) latest v2.7.2 rpm for EL7 | EL8 | EL9
+[Download](https://github.com/Vonng/haproxy-rpm/releases/tag/v2.7.6) latest v2.7.6 rpm for EL7 | EL8 | EL9
 
 Original Repo: [philyuchkoff/HAProxy-2-RPM-builder](https://github.com/philyuchkoff/HAProxy-2-RPM-builder)
 
 
 
-### [HAProxy](http://www.haproxy.org/) 2.7.2 2023/01/20
+### [HAProxy](http://www.haproxy.org/) 2.7.6 2023/03/28
 
 Perform the following steps on a build box as a regular user:
 
@@ -37,7 +37,7 @@ rm -rf rpmbuild/SPECS ; mkdir -p rpmbuild/SPECS ; cp -r ./SPECS/* ./rpmbuild/SPE
 
 rpmbuild --nodebuginfo -ba SPECS/haproxy.spec \
 	--define "mainversion 2.7" \
-	--define "version 2.7.2" \
+	--define "version 2.7.6" \
 	--define "release 1" \
 	--define "_topdir %(pwd)/rpmbuild" \
 	--define "_builddir %{_topdir}/BUILD" \
