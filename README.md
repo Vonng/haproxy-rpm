@@ -1,17 +1,17 @@
-# RPM builder for HAProxy 2.6 (CentOS 7/8/9)
+# RPM builder for HAProxy 2.8 (CentOS 7/8/9)
 
 Build latest haproxy binary with prometheus metrics support
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/Vonng/pigsty?style=for-the-badge)
 ![GitHub All Releases](https://img.shields.io/github/downloads/Vonng/pigsty/total?style=for-the-badge)
 
-[Download](https://github.com/Vonng/haproxy-rpm/releases/tag/v2.6.1) latest v2.6.1 rpm for EL7 | EL8 | EL9
+[Download](https://github.com/Vonng/haproxy-rpm/releases/tag/v2.8.1) latest v2.8.1 rpm for EL7 | EL8 | EL9
 
 Original Repo: [philyuchkoff/HAProxy-2-RPM-builder](https://github.com/philyuchkoff/HAProxy-2-RPM-builder)
 
 
 
-### [HAProxy](http://www.haproxy.org/) 2.6.1 2022/06/21
+### [HAProxy](http://www.haproxy.org/) 2.8.1 2023/05/21
 
 Perform the following steps on a build box as a regular user:
 
@@ -36,8 +36,8 @@ rm -rf rpmbuild/SOURCES ; mkdir -p rpmbuild/SOURCES ; cp -r ./SOURCES/* ./rpmbui
 rm -rf rpmbuild/SPECS ; mkdir -p rpmbuild/SPECS ; cp -r ./SPECS/* ./rpmbuild/SPECS/
 
 rpmbuild --nodebuginfo -ba SPECS/haproxy.spec \
-	--define "mainversion 2.6" \
-	--define "version 2.6.1" \
+	--define "mainversion 2.8" \
+	--define "version 2.8.1" \
 	--define "release 1" \
 	--define "_topdir %(pwd)/rpmbuild" \
 	--define "_builddir %{_topdir}/BUILD" \
