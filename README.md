@@ -1,17 +1,17 @@
-# RPM builder for HAProxy 2.8 (CentOS 7/8/9)
+# RPM builder for HAProxy 2.9 (CentOS 7/8/9)
 
 Build latest haproxy binary with prometheus metrics support
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/Vonng/pigsty?style=for-the-badge)
 ![GitHub All Releases](https://img.shields.io/github/downloads/Vonng/pigsty/total?style=for-the-badge)
 
-[Download](https://github.com/Vonng/haproxy-rpm/releases/tag/v2.9.3) latest v2.9.3 rpm for EL7 | EL8 | EL9
+[Download](https://github.com/Vonng/haproxy-rpm/releases/tag/v2.9.5) latest v2.9.5 rpm for EL7 | EL8 | EL9
 
 Original Repo: [philyuchkoff/HAProxy-2-RPM-builder](https://github.com/philyuchkoff/HAProxy-2-RPM-builder)
 
 
 
-### [HAProxy](http://www.haproxy.org/) 2.9.3 2024/01/18
+### [HAProxy](http://www.haproxy.org/) 2.9.5 2024/02/25
 
 Perform the following steps on a build box as a regular user:
 
@@ -19,7 +19,7 @@ Perform the following steps on a build box as a regular user:
 yum -y groupinstall 'Development Tools'
 yum install -y pcre-devel make gcc openssl-devel rpm-build systemd-devel wget sed zlib-devel
 
-cd /opt
+cd /tmp
 git clone https://github.com/Vonng/haproxy-rpm
 cd ./haproxy-rpm
 make build
@@ -36,8 +36,8 @@ rm -rf rpmbuild/SOURCES ; mkdir -p rpmbuild/SOURCES ; cp -r ./SOURCES/* ./rpmbui
 rm -rf rpmbuild/SPECS ; mkdir -p rpmbuild/SPECS ; cp -r ./SPECS/* ./rpmbuild/SPECS/
 
 rpmbuild --nodebuginfo -ba SPECS/haproxy.spec \
-	--define "mainversion 2.8" \
-	--define "version 2.9.3" \
+	--define "mainversion 2.9" \
+	--define "version 2.9.5" \
 	--define "release 1" \
 	--define "_topdir %(pwd)/rpmbuild" \
 	--define "_builddir %{_topdir}/BUILD" \
